@@ -1,0 +1,15 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/app/ui/search.tsx/proxy.js"],"sourcesContent":["import { registerClientReference } from \"react-server-dom-turbopack/server.edge\";\nexport default registerClientReference(\n    function() { throw new Error(\"Attempted to call the default export of [project]/app/ui/search.tsx <module evaluation> from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.\"); },\n    \"[project]/app/ui/search.tsx <module evaluation>\",\n    \"default\",\n);\n"],"names":[],"mappings":";;;AAAA;;uCACe,CAAA,GAAA,sZAAA,CAAA,0BAAuB,AAAD,EACjC;IAAa,MAAM,IAAI,MAAM;AAAqR,GAClT,mDACA"}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/app/ui/search.tsx/proxy.js"],"sourcesContent":["import { registerClientReference } from \"react-server-dom-turbopack/server.edge\";\nexport default registerClientReference(\n    function() { throw new Error(\"Attempted to call the default export of [project]/app/ui/search.tsx from the server, but it's on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component.\"); },\n    \"[project]/app/ui/search.tsx\",\n    \"default\",\n);\n"],"names":[],"mappings":";;;AAAA;;uCACe,CAAA,GAAA,sZAAA,CAAA,0BAAuB,AAAD,EACjC;IAAa,MAAM,IAAI,MAAM;AAAiQ,GAC9R,+BACA"}},
+    {"offset": {"line": 29, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 35, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 39, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 45, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/app/dashboard/customers/page.tsx"],"sourcesContent":["export default function Page() {\n    return <p>Customers Page</p>;\n  }"],"names":[],"mappings":";;;;;AAAe,SAAS;IACpB,qBAAO,+YAAC;kBAAE;;;;;;AACZ"}},
+    {"offset": {"line": 59, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 70, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/.next-internal/server/app/dashboard/customers/page/actions.js"],"sourcesContent":["__turbopack_export_value__({\n  '75fbe48fa3e35c63192f88d1c60e680fded3dbd1': (...args) => Promise.resolve(require('ACTIONS_MODULE0')).then(mod => (0, mod['$$RSC_SERVER_ACTION_0'])(...args)),\n});"],"names":[],"mappings":"AAAA,2BAA2B;IACzB,4CAA4C,CAAC,GAAG,OAAS,QAAQ,OAAO,yFAA6B,IAAI,CAAC,CAAA,MAAO,CAAC,GAAG,GAAG,CAAC,wBAAwB,KAAK;AACxJ"}},
+    {"offset": {"line": 73, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
