@@ -527,6 +527,10 @@ select {
   position: relative;
 }
 
+.inset-0 {
+  inset: 0;
+}
+
 .left-3 {
   left: .75rem;
 }
@@ -547,6 +551,11 @@ select {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mb-2 {
@@ -647,11 +656,6 @@ select {
 
 .hidden {
   display: none;
-}
-
-.size-\[12px\] {
-  width: 12px;
-  height: 12px;
 }
 
 .h-10 {
@@ -1081,6 +1085,11 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#24292F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 41 47 / var(--tw-bg-opacity));
+}
+
 .p-2 {
   padding: .5rem;
 }
@@ -1167,6 +1176,11 @@ select {
   padding-bottom: 9px;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .pb-2 {
   padding-bottom: .5rem;
 }
@@ -1236,6 +1250,10 @@ select {
   line-height: 2rem;
 }
 
+.text-\[12px\] {
+  font-size: 12px;
+}
+
 .text-\[44px\] {
   font-size: 44px;
 }
@@ -1253,10 +1271,6 @@ select {
 .text-xs {
   font-size: .75rem;
   line-height: 1rem;
-}
-
-.text-\[12px\] {
-  font-size: 12px;
 }
 
 .font-medium {
@@ -1467,6 +1481,10 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: rgb(224 242 254 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-\[\#24292F\]\/90:hover {
+  background-color: #24292fe6;
+}
+
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(47 111 235 / var(--tw-text-opacity));
@@ -1531,6 +1549,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .sm\:flex {
     display: flex;
+  }
+
+  .sm\:max-w-md {
+    max-width: 28rem;
   }
 
   .sm\:rotate-0 {

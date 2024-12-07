@@ -1,6 +1,22 @@
 {
   "node": {
-    "fdda32d133c9013289279e5c6922829d9811e4ab": {
+    "75fbe48fa3e35c63192f88d1c60e680fded3dbd1": {
+      "workers": {
+        "app/dashboard/invoices/[id]/edit/page": "[project]/.next-internal/server/app/dashboard/invoices/[id]/edit/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)"
+      },
+      "layer": {
+        "app/dashboard/invoices/[id]/edit/page": "rsc"
+      }
+    },
+    "344e743686735202b1d7d8cdb5a2ba161e7f837f": {
+      "workers": {
+        "app/dashboard/invoices/[id]/edit/page": "[project]/.next-internal/server/app/dashboard/invoices/[id]/edit/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)"
+      },
+      "layer": {
+        "app/dashboard/invoices/[id]/edit/page": "action-browser"
+      }
+    },
+    "8b33d17ed6eb5484a6c9d06839b6fd76ea894e74": {
       "workers": {
         "app/dashboard/invoices/[id]/edit/page": "[project]/.next-internal/server/app/dashboard/invoices/[id]/edit/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)"
       },
@@ -16,7 +32,7 @@
         "app/dashboard/invoices/[id]/edit/page": "action-browser"
       }
     },
-    "344e743686735202b1d7d8cdb5a2ba161e7f837f": {
+    "fdda32d133c9013289279e5c6922829d9811e4ab": {
       "workers": {
         "app/dashboard/invoices/[id]/edit/page": "[project]/.next-internal/server/app/dashboard/invoices/[id]/edit/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)"
       },

@@ -343,7 +343,9 @@ async function fetchCustomers() {
         const data = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$vercel$2b$postgres$40$0$2e$8$2e$0$2f$node_modules$2f40$vercel$2f$postgres$2f$dist$2f$chunk$2d$WDBQYBZQ$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$locals$3e$__["sql"]`
       SELECT
         id,
-        name
+        name,
+        email,
+        image_url
       FROM customers
       ORDER BY name ASC
     `;
@@ -900,7 +902,7 @@ var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_
 {
 __turbopack_export_namespace__(__turbopack_import__("[project]/app/dashboard/(overview)/page.tsx [app-rsc] (ecmascript)"));
 }}),
-"[project]/.next-internal/server/app/dashboard/(overview)/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/ui/dashboard/sidenav.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)": (function(__turbopack_context__) {
+"[project]/.next-internal/server/app/dashboard/(overview)/page/actions.js [app-rsc] (ecmascript)": (function(__turbopack_context__) {
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, m: module, e: exports, t: require } = __turbopack_context__;
 {
@@ -911,4 +913,4 @@ __turbopack_export_value__({
 
 };
 
-//# sourceMappingURL=%5Broot%20of%20the%20server%5D__ca73cf._.js.map
+//# sourceMappingURL=%5Broot%20of%20the%20server%5D__8b131b._.js.map
