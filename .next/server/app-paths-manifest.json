@@ -1,9 +1,7 @@
 {
+  "/dashboard/invoices/create/page": "app/dashboard/invoices/create/page.js",
   "/dashboard/(overview)/page": "app/dashboard/(overview)/page.js",
-  "/login/page": "app/login/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/auth/error/route": "app/api/auth/error/route.js",
-  "/page": "app/page.js",
-  "/api/auth/providers/route": "app/api/auth/providers/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/dashboard/invoices/page": "app/dashboard/invoices/page.js",
+  "/dashboard/invoices/[id]/edit/page": "app/dashboard/invoices/[id]/edit/page.js",
+  "/api/invoices/route": "app/api/invoices/route.js"
 }

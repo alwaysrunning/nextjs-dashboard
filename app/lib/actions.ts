@@ -71,7 +71,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     redirect('/dashboard/invoices');
   }
 
-  export async function updateInvoice(
+export async function updateInvoice(
     id: string,
     prevState: State,
     formData: FormData

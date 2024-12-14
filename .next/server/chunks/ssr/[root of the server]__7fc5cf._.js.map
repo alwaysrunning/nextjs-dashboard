@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 103, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/app/dashboard/customers/page.tsx"],"sourcesContent":["import { db } from \"@vercel/postgres\";\n\nconst client = await db.connect();\n\nexport default async function Page() {\n  let data = await client.sql`\n  SELECT *\n  FROM invoices;\n`;\n\n  const posts = data.rows\n  return ( \n    <div className=\"w-full\">\n      <ul>\n        {posts.map((post: any) => (\n          <li key={post.id}>{post.amount}</li>\n        ))}\n      </ul>\n    </div>\n  )\n}"],"names":[],"mappings":";;;;AAAA;AAAA;;;AAEA,MAAM,SAAS,MAAM,kPAAA,CAAA,KAAE,CAAC,OAAO;AAEhB,eAAe;IAC5B,IAAI,OAAO,MAAM,OAAO,GAAG,CAAC;;;AAG9B,CAAC;IAEC,MAAM,QAAQ,KAAK,IAAI;IACvB,qBACE,+YAAC;QAAI,WAAU;kBACb,cAAA,+YAAC;sBACE,MAAM,GAAG,CAAC,CAAC,qBACV,+YAAC;8BAAkB,KAAK,MAAM;mBAArB,KAAK,EAAE;;;;;;;;;;;;;;;AAK1B"}},
+    {"offset": {"line": 139, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 151, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/.next-internal/server/app/dashboard/customers/page/actions.js"],"sourcesContent":["__turbopack_export_value__({\n});"],"names":[],"mappings":"AAAA,2BAA2B,CAC3B"}},
+    {"offset": {"line": 152, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
