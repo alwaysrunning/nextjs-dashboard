@@ -6,8 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import clsx from 'clsx';
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
@@ -28,20 +27,19 @@ export default function NavLinks() {
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
-          <Button
+          <Link
             key={link.name}
-            variant="ghost"
-            asChild
-            className={cn(
-              'w-full justify-start gap-2',
-              pathname === link.href && 'bg-accent text-accent-foreground'
+            href={link.href}
+            className={clsx(
+              'flex h-[48px] grow my-1 items-center justify-center gap-2 rounded-md p-3 text-sm hover:bg-sky-100 hover:text-blue-600 font-medium md:flex-none md:justify-start md:p-2 md:px-3',
+              {
+                'bg-sky-100 text-blue-600': pathname === link.href,
+              },
             )}
           >
-            <Link href={link.href}>
-              <LinkIcon className="h-4 w-4" />
-              <span className="hidden md:inline-block">{link.name}</span>
-            </Link>
-          </Button>
+            <LinkIcon className="w-6" />
+            <p className="hidden md:block">{link.name}</p>
+          </Link>
         );
       })}
     </>

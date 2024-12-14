@@ -11,9 +11,9 @@ export default function AcmeLogo() {
       )}
     >
       <GlobeIcon 
-        className="h-12 w-12 text-white rotate-[15deg]" 
+        className="h-12 w-12 rotate-[15deg]" 
       />
-      <p className="text-3xl font-bold text-white">
+      <p className="text-3xl font-bold ">
         Admin
       </p>
     </div>

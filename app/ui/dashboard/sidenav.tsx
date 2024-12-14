@@ -23,12 +23,12 @@ export default function SideNav() {
   };
 
   return (
-    <nav className="flex h-full flex-col px-3 py-4 md:px-2">
+    <nav className="flex h-full flex-col px-3 md:px-2">
       <Link
-        className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
+        className="mb-2 flex items-end justify-start rounded-md p-4"
         href="/"
       >
-        <div className="w-32 text-white md:w-40">
+        <div className="w-32 md:w-40">
           <AcmeLogo />
         </div>
       </Link>
@@ -48,14 +48,14 @@ export default function SideNav() {
         <div className="hidden md:block">
           <NavLinks />
         </div>
-        <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
+        <div className="hidden h-auto w-full grow rounded-md md:block"></div>
         <Button
           variant="ghost"
           onClick={handleSignOut}
           className="flex h-[48px] w-full items-center justify-start gap-2"
         >
           <PowerIcon className="h-4 w-4" />
-          <span className="hidden md:block">退出登录</span>
+          <span className="hidden md:block">Logout</span>
         </Button>
       </div>
     </nav>

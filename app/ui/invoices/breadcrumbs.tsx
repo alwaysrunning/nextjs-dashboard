@@ -22,7 +22,7 @@ export default function Breadcrumbs({
       <BreadcrumbList>
         {breadcrumbs.map((breadcrumb, index) => (
           <>
-            <BreadcrumbItem key={breadcrumb.href}>
+            <BreadcrumbItem key={index}>
               <BreadcrumbLink 
                 href={breadcrumb.href}
                 className={breadcrumb.active ? 'font-medium text-foreground' : 'text-muted-foreground'}

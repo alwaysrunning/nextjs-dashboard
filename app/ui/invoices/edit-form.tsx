@@ -38,10 +38,10 @@ export default function EditInvoiceForm({
         <CardContent className="p-6">
           {/* Customer Name */}
           <div className="mb-4">
-            <Label htmlFor="customer">选择客户</Label>
+            <Label htmlFor="customer"> select customer </Label>
             <Select defaultValue={invoice.customer_id} name="customerId">
               <SelectTrigger>
-                <SelectValue placeholder="选择客户" />
+                <SelectValue placeholder="select customer" />
               </SelectTrigger>
               <SelectContent>
                 {customers.map((customer) => (
@@ -58,13 +58,13 @@ export default function EditInvoiceForm({
 
           {/* Invoice Amount */}
           <div className="mb-4">
-            <Label htmlFor="amount">金额</Label>
+            <Label htmlFor="amount"> amount </Label>
             <Input
               id="amount"
               name="amount"
               type="number"
               defaultValue={invoice.amount}
-              placeholder="输入美元金额"
+              placeholder="input amount"
             />
             {state.errors?.amount && (
               <p className="text-sm text-destructive mt-2">{state.errors.amount}</p>
@@ -73,19 +73,19 @@ export default function EditInvoiceForm({
 
           {/* Invoice Status */}
           <div className="mb-4">
-            <Label>发票状态</Label>
+            <Label> invoice status </Label>
             <RadioGroup name="status" defaultValue={invoice.status} className="mt-2">
               <div className="flex gap-4">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="pending" id="pending" />
                   <Label htmlFor="pending" className="flex items-center gap-1.5 rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600">
-                    待处理 <ClockIcon className="h-4 w-4" />
+                    pending <ClockIcon className="h-4 w-4" />
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="paid" id="paid" />
                   <Label htmlFor="paid" className="flex items-center gap-1.5 rounded-full bg-green-500 px-3 py-1.5 text-xs font-medium text-white">
-                    已支付 <CheckIcon className="h-4 w-4" />
+                    paid <CheckIcon className="h-4 w-4" />
                   </Label>
                 </div>
               </div>
@@ -99,9 +99,9 @@ export default function EditInvoiceForm({
       
       <div className="mt-6 flex justify-end gap-4">
         <Button variant="outline" asChild>
-          <Link href="/dashboard/invoices">取消</Link>
+          <Link href="/dashboard/invoices">cancel</Link>
         </Button>
-        <Button type="submit">更新发票</Button>
+        <Button type="submit">update invoice</Button>
       </div>
     </form>
   );
