@@ -1,8 +1,12 @@
-import { clsx } from 'clsx';
-import Link from 'next/link';
-import { lusitana } from '@/app/ui/fonts';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 
-interface Breadcrumb {
+interface BreadcrumbType {
   label: string;
   href: string;
   active?: boolean;
@@ -11,26 +15,27 @@ interface Breadcrumb {
 export default function Breadcrumbs({
   breadcrumbs,
 }: {
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs: BreadcrumbType[];
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 block">
-      <ol className={clsx(lusitana.className, 'flex text-xl md:text-2xl')}>
+    <Breadcrumb className="mb-6">
+      <BreadcrumbList>
         {breadcrumbs.map((breadcrumb, index) => (
-          <li
-            key={breadcrumb.href}
-            aria-current={breadcrumb.active}
-            className={clsx(
-              breadcrumb.active ? 'text-gray-900' : 'text-gray-500',
+          <>
+            <BreadcrumbItem key={breadcrumb.href}>
+              <BreadcrumbLink 
+                href={breadcrumb.href}
+                className={breadcrumb.active ? 'font-medium text-foreground' : 'text-muted-foreground'}
+              >
+                {breadcrumb.label}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            {index < breadcrumbs.length - 1 && (
+              <BreadcrumbSeparator />
             )}
-          >
-            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
-            {index < breadcrumbs.length - 1 ? (
-              <span className="mx-3 inline-block">/</span>
-            ) : null}
-          </li>
+          </>
         ))}
-      </ol>
-    </nav>
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }
