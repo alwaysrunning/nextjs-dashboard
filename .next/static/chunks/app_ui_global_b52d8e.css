@@ -1085,11 +1085,6 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#24292F\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(36 41 47 / var(--tw-bg-opacity));
-}
-
 .p-2 {
   padding: .5rem;
 }
@@ -1124,6 +1119,11 @@ select {
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .px-\[14px\] {
@@ -1174,11 +1174,6 @@ select {
 .py-\[9px\] {
   padding-top: 9px;
   padding-bottom: 9px;
-}
-
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .pb-2 {
@@ -1479,10 +1474,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .hover\:bg-sky-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(224 242 254 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-\[\#24292F\]\/90:hover {
-  background-color: #24292fe6;
 }
 
 .hover\:text-blue-600:hover {
