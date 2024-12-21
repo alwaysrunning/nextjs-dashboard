@@ -15,7 +15,7 @@ const Index: React.FC<IndexProps> = ({ children, event }) => {
     >
       <div className="text-lg flex items-center">
         <div className="mr-2 text-xl" />
-        图片裁剪工具
+        Image Crop Tool
       </div>
       <div className="mt-6 flex justify-center">
         {children}

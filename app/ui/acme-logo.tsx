@@ -14,7 +14,7 @@ export default function AcmeLogo() {
         className="h-12 w-12 rotate-[15deg]" 
       />
       <p className="text-3xl font-bold ">
-        Admin
+        Dashboard
       </p>
     </div>
   );

@@ -28,9 +28,7 @@ export default function SideNav() {
         className="mb-2 flex items-end justify-start rounded-md p-4"
         href="/"
       >
-        <div className="w-32 md:w-40">
-          <AcmeLogo />
-        </div>
+        <AcmeLogo />
       </Link>
 
       <Sheet>

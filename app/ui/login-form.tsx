@@ -65,7 +65,8 @@ export default function LoginForm() {
           <Button className="mt-4 w-full">
             Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
           </Button>
-          <div className='text-[12px] text-gray-600	mt-[10px]'>example: user@nextmail.com,  123456</div>
+          <div className='text-[12px] text-gray-600	mt-[10px]'>email: user@nextmail.com</div>
+          <div className='text-[12px] text-gray-600	mt-[5px]'>password: 123456</div>
           <div className="flex h-8 items-end space-x-1">
             {errorMessage && (
               <>

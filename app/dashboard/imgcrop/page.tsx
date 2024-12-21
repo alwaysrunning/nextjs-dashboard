@@ -437,7 +437,7 @@ const Client = () => {
           
           <Button 
             variant="outline"
-            className="mt-5 w-20 rounded relative"
+            className="mt-5 rounded relative"
           >
             <input 
               ref={inputRef} 
@@ -446,60 +446,60 @@ const Client = () => {
               accept="image/gif,image/jpeg,image/jpg,image/png,image/svg"
               className="w-full h-full absolute left-0 top-0 opacity-0 cursor-pointer"
             />
-            选择图片
+            Choose Image
           </Button>
 
           <div>
             <Button 
               variant="outline"
-              className="mt-5 mr-2.5 w-20"
+              className="mt-5 mr-2.5"
               onClick={() => handleScale(true)}
             >
-              放大
+              Zoom In
             </Button>
             <Button 
               variant="outline"
-              className="mt-5 w-20"
+              className="mt-5"
               onClick={() => handleScale(false)}
             >
-              缩小
+              Zoom Out
             </Button>
           </div>
 
           <Button 
             variant="outline"
-            className="mt-5 w-20"
+            className="mt-5"
             onClick={handleRotate}
           >
-            旋转
+            Rotate
           </Button>
 
           <Button 
             variant="outline"
-            className="mt-5 w-20"
+            className="mt-5"
             onClick={handleGrayscale}
           >
-            灰度
+            Grayscale
           </Button>
 
           <Button 
             variant="outline"
-            className="mt-5 w-20"
+            className="mt-5"
             onClick={handleReset}
           >
-            重置
+            Reset
           </Button>
 
           <Button 
             variant="outline"
-            className="mt-5 w-20"
+            className="mt-5"
           >
             <a 
               href={dataUrl} 
               download="canvas.png"
               className="w-full h-full"
             >
-              下载
+              Download
             </a>
           </Button>
         </div>
