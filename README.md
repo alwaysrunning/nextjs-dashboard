@@ -1,5 +1,18 @@
-## Next.js App Router Course - Starter
+## Next.js App
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
+This is the template for the Next.js App. It contains the starting code and the main functional points for the dashboard application.
 
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+
+## The main functional points are as follows
+
+1. Streaming Rendering
+2. Tailwindcss
+3. Shadcn UI
+4. Server Actions
+5. Server Components
+6. Theme switching
+7. GitHub OAuth Login
+8. Add, delete, modify, and search (postgres)
+8. Image cropping function
+9. Deployed through the automated deployment cloud platform Vercel
+...
