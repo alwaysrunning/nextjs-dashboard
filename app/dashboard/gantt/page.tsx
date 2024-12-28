@@ -12,10 +12,6 @@ declare global {
   }
 }
 
-window.HandleTooltipDetailClick = () => {
-  window.open(window.Url);
-};
-
 // 添加类型定义
 interface TaskNode {
   TaskName: string;
@@ -36,6 +32,13 @@ interface ProjectData {
 }
 
 const Echarts = () => {
+  useEffect(() => {
+    // 将window相关的代码移到这里
+    window.HandleTooltipDetailClick = () => {
+      window.open(window.Url);
+    };
+  }, []);
+
   /** 模拟接口数据 */
   const NodeList = [
     {
@@ -153,7 +156,10 @@ const Echarts = () => {
         const { name } = data;
         const index = NodeList.findIndex((node) => node.RefId === name);
         const rule: any = NodeList[index] || {};
-        window.Url = `https://www.baidu.com?TaskId=11&ProjectId=22`
+        const url = `https://www.baidu.com?TaskId=11&ProjectId=22`;
+        if (typeof window !== 'undefined') {
+          window.Url = url;
+        }
         return `<div class="GanttChart">
       <div class="wrap">
         <div class="container1" onclick="HandleTooltipDetailClick()">
@@ -401,7 +407,7 @@ const Echarts = () => {
         },
       },
     ],
-  }), [projectIds, maxTime, minTime, xLen]);
+  }), [projectIds, maxTime, minTime, xLen, NodeList]);
 
   // 将图表实例保存在 ref 中
   const chartRef = useRef<echarts.ECharts | null>(null);
