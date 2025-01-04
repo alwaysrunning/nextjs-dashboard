@@ -15,8 +15,14 @@ const defaultTemplates: FormTemplate[] = [
     type: 'simple',
     username: '',
     gender: '',
-    interests: []
-    
+    interests: [] 
+  },
+  {
+    id: '2',
+    type: 'complex',
+    username: '',
+    gender: '',
+    interests: [] 
   }
 ]
 
