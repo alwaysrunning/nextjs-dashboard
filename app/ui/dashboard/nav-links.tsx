@@ -4,6 +4,7 @@ import {
   HomeIcon,
   DocumentDuplicateIcon,
   ChartBarSquareIcon,
+  BuildingLibraryIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -20,7 +21,7 @@ const links = [
   },
   { name: 'ImageCrop', href: '/dashboard/imgcrop', icon: UserGroupIcon },
   { name: 'Gantt', href: '/dashboard/gantt', icon: ChartBarSquareIcon },
-  { name: 'Form', href: '/dashboard/form', icon: ChartBarSquareIcon}
+  { name: 'Form', href: '/dashboard/form', icon: BuildingLibraryIcon}
 ];
 
 export default function NavLinks() {

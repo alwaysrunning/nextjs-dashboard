@@ -1,17 +1,35 @@
 'use client'
 
-// 假设DynamicForm和useFormStore的路径已更正
 import { DynamicForm } from '../../ui/form/DynamicForm'
 import { useFormStore } from '../../store/formStore'
+import { UseFormReturn, useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner"
 
 export default function FormPage() {
   const templates = useFormStore((state:any) => state.templates as any)
   const addTemplate = useFormStore((state:any) => state.addTemplate)
+  
+  const form = useForm({
+    defaultValues: {
+      username: '',
+      gender: '',
+      interests: [],
+      education: '',
+      newsletter: false,
+      bio: ''
+    },
+  });
 
-  const handleSubmit = (data: any) => {
-    console.log('表单提交数据:', data)
-    // 这里处理表单提交逻辑
-  }
+  const onSubmit = async (data: any) => {
+    try {
+      // 这里添加您的提交逻辑
+      console.log('表单提交数据:', data)
+      toast.success("表单提交成功！")
+    } catch (error) {
+      toast.error("表单提交失败，请重试")
+    }
+  };
 
   const handleAddForm = () => {
     const newTemplate = {
@@ -34,10 +52,29 @@ export default function FormPage() {
       </div>
       <div className="space-y-8">
         {templates.map((template) => (
-          <div key={template.id} className="bg-white p-6 rounded-lg shadow">
-            <DynamicForm template={template} onSubmit={handleSubmit} />
+          <div key={template.id} className="bg-white">
+            <DynamicForm 
+              template={template} 
+              form={form}
+            />
           </div>
         ))}
+        <Button 
+          type="submit" 
+          onClick={form.handleSubmit(onSubmit)}
+          disabled={form.formState.isSubmitting}
+        >
+          {form.formState.isSubmitting ? "提交中..." : "提交"}
+        </Button>
+        
+        {/* 显示整体表单错误 */}
+        {Object.keys(form.formState.errors).length > 0 && (
+          <div className="text-red-500 mt-4">
+            {Object.entries(form.formState.errors).map(([key, error]) => (
+              <p key={key}>{error?.message as string}</p>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

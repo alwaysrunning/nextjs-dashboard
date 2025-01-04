@@ -1,9 +1,22 @@
 import { create } from 'zustand'
 
-const defaultTemplates = [
+interface FormTemplate {
+  id: string;
+  type: string;
+  username?: string;
+  gender?: string;
+  interests?: string[];
+  
+}
+
+const defaultTemplates: FormTemplate[] = [
   {
     id: '1',
-    type: 'simple'
+    type: 'simple',
+    username: '',
+    gender: '',
+    interests: []
+    
   }
 ]
 
@@ -17,8 +30,10 @@ export const useFormStore = create((set) => ({
     set((state) => ({
       templates: state.templates.filter((t) => t.id !== id),
     })),
-  updateTemplate: (id, template) =>
+  updateTemplate: (id: string, template) =>
     set((state) => ({
-      templates: state.templates.map((t) => (t.id === id ? template : t)),
-    })),
+      templates: state.templates.map((t) => 
+        t.id === id ? { ...t, ...template } : t
+      ),
+    }))
 })) 

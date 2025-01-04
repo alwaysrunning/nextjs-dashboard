@@ -2,12 +2,25 @@ import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/for
 import { Input } from "@/components/ui/input"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
+import { useFormStore } from "@/app/store/formStore"
+import { useEffect } from "react"
 
 interface SimpleFormProps {
     form: any;
+    templateId: string;
 }
 
-export function SimpleForm({ form }: SimpleFormProps) {
+export function SimpleForm({ form, templateId }: SimpleFormProps) {
+  const updateTemplate = useFormStore(state => state.updateTemplate)
+  
+  useEffect(() => {
+    const subscription = form.watch((values: any) => {
+      updateTemplate(templateId, values)
+    })
+    
+    return () => subscription.unsubscribe()
+  }, [form, templateId, updateTemplate])
+
   return (
     <>
         <FormField

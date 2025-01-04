@@ -1,5 +1,6 @@
-import { RegisterOptions, useForm } from "react-hook-form"
+import { RegisterOptions, useForm, UseFormReturn } from "react-hook-form"
 import { Button } from "@/components/ui/button"
+import { useFormStore } from "@/app/store/formStore"
 import {
   Form,
 } from "@/components/ui/form"
@@ -15,7 +16,7 @@ interface Template {
 
 interface DynamicFormProps {
   template: Template;
-  onSubmit: (data: any) => void;
+  form: UseFormReturn<FormValues>;
 }
 
 interface FormValues {
@@ -27,24 +28,16 @@ interface FormValues {
   bio: string;
 }
 
-export function DynamicForm({ template, onSubmit }: DynamicFormProps) {
-  const form = useForm<FormValues>({
-    defaultValues: {
-      username: '',
-      gender: '',
-      interests: [],
-      education: '',
-      newsletter: false,
-      bio: ''
-    }
-  });
+export function DynamicForm({ template, form }: DynamicFormProps) {
+  const templates = useFormStore(state => state.templates)
+  const currentTemplate = templates.find(t => t.id === "1")
+  console.log(currentTemplate) // 获取当前表单值
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {template.type === "simple" && <SimpleForm form={form}></SimpleForm>}
+      <form className="space-y-8">
+        {template.type === "simple" && <SimpleForm form={form} templateId="1" />}
         {template.type === "complex" && <ComplexForm form={form}></ComplexForm>}
-        <Button type="submit">提交</Button>
       </form>
     </Form>
   )
