@@ -1,6 +1,16 @@
 import { db } from "@vercel/postgres";
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 const client = await db.connect();
+
+async function main() {
+  const post = await prisma.user.findMany({
+    where: { id: 1 },
+  })
+  return post
+}
 
 async function listInvoices() {
 	// const data = await client.sql`
@@ -22,7 +32,7 @@ export async function GET() {
   //     'Uncomment this file and remove this line. You can delete this file when you are finished.',
   // });
   try {
-  	return Response.json(await listInvoices());
+    return Response.json(await main());
   } catch (error) {
   	return Response.json({ error }, { status: 500 });
   }
