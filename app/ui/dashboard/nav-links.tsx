@@ -21,7 +21,6 @@ const links = [
   },
   { name: 'ImageCrop', href: '/dashboard/imgcrop', icon: UserGroupIcon },
   { name: 'Gantt', href: '/dashboard/gantt', icon: ChartBarSquareIcon },
-  { name: 'Form', href: '/dashboard/form', icon: BuildingLibraryIcon}
 ];
 
 export default function NavLinks() {
