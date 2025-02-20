@@ -1,7 +1,14 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
+// 在应用程序结束时关闭连接
+process.on('SIGINT', async () => {
+  await prisma.$disconnect();
+  process.exit(0);
+});
 // 定义请求体的验证模式
 const InvoiceSchema = z.object({
   customerId: z.string().min(1, '客户ID是必需的'),
@@ -21,13 +28,22 @@ export async function POST(request: Request) {
     
     // 转换金额为分
     const amountInCents = amount * 100;
-    const date = new Date().toISOString().split('T')[0];
+    const date = new Date().toISOString();
 
     // 插入数据库
-    await sql`
-      INSERT INTO invoices (customer_id, amount, status, date)
-      VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
-    `;
+    // await sql`
+    //   INSERT INTO invoices (customer_id, amount, status, date)
+    //   VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+    // `;
+
+    await prisma.invoices.create({
+      data: {
+        customer_id: customerId,
+        amount: amountInCents,
+        status: status,
+        date:  date
+      }
+    })
 
     return NextResponse.json({ 
       success: true, 
@@ -41,7 +57,7 @@ export async function POST(request: Request) {
         error: error.errors 
       }, { status: 400 });
     }
-
+    console.log(error)
     return NextResponse.json({ 
       success: false, 
       error: '创建发票失败' 

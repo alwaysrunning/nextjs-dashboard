@@ -23,7 +23,7 @@ export default function PaginationComponent({ totalPages }: { totalPages: number
     params.set('page', pageNumber.toString());
     return `${pathname}?${params.toString()}`;
   };
-
+  
   return (
     <Pagination>
       <PaginationContent>
