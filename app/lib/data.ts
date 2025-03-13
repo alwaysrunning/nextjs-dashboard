@@ -8,7 +8,7 @@ import {
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
-
+import { auth } from '@/auth'
 
 import { db } from "@vercel/postgres";
 import { customers } from './placeholder-data';
@@ -26,7 +26,13 @@ export async function fetchRevenue() {
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
-
+    const session = await auth();
+    console.log('session===', session)
+    // 验证用户是否登录
+    if (!session?.user) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    
     console.log('Fetching revenue data...');
     await new Promise((resolve) => setTimeout(resolve, 1000));
     

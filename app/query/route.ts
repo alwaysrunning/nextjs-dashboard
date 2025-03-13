@@ -1,6 +1,7 @@
 import { db } from "@vercel/postgres";
 import { PrismaClient } from '@prisma/client'
 import { customers, invoices, users } from "../lib/placeholder-data";
+import { auth } from '@/auth'
 
 const prisma = new PrismaClient()
 
@@ -17,7 +18,7 @@ async function connectToDatabase() {
 await connectToDatabase();
 
 async function fetchUser(userId) {
-
+  console.log('userId==', userId)
   // const user = await prisma.user.findUnique({
   //   where: {
   //     // email: 'alice@prisma.io',
@@ -121,6 +122,7 @@ async function fetchUser(userId) {
       customer: true
     }
   })
+  console.log(111, usersWithCount)
   return usersWithCount
 }
 
@@ -235,20 +237,21 @@ async function updateUser(data) {
   //   },
   // })
 
-  const updatePosts = await prisma.post.updateMany({
-    where: {
-      id: Number(data.id), // Ensure you are updating posts for the correct user
-    },
-    data: {
-      authorId: {
-        // increment: 1
-        // decrement: 1
-        set: 2
-      },
-    },
-  })
+  // const updatePosts = await prisma.posts.updateMany({
+  //   where: {
+  //     id: Number(data.id), // Ensure you are updating posts for the correct user
+  //   },
+  //   data: {
+  //     authorId: {
+  //       // increment: 1
+  //       // decrement: 1
+  //       set: 2
+  //     },
+  //   },
+  // })
 
-  return updatePosts
+  // return updatePosts
+  return []
 }
 
 async function deleteUser(data) {
@@ -260,38 +263,52 @@ async function deleteUser(data) {
   //   },
   // })
 
-  const deleteUsers = await prisma.user.deleteMany({
-    where: {
-      email: {
-        contains: 'prisma.io',
-      },
-    },
-  })
+  // const deleteUsers = await prisma.user.deleteMany({
+  //   where: {
+  //     email: {
+  //       contains: 'prisma.io',
+  //     },
+  //   },
+  // })
 
-  return {
-    code: '200',
-    message: 'success',
-  };
+  // return {
+  //   code: '200',
+  //   message: 'success',
+  // };
 }
 
 export async function GET(request: Request) {
   try {
-    const url = new URL(request.url); // 获取请求的 URL
-    const params = new URLSearchParams(url.search); // 解析查询参数
-    const userId = params.get('id'); // 获取特定参数，例如 'id'
+    const session = await auth();
 
-    return Response.json(await fetchUser(userId)); // 将参数传递给 fetchUser 函数
+    if (!session?.user) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const url = new URL(request.url);
+    const params = new URLSearchParams(url.search);
+    const userId = params.get('id');
+    const tt = await fetchUser(userId)
+
+    return Response.json(await fetchUser(userId));
   } catch (error) {
-  	return Response.json({ error }, { status: 500 });
+    return Response.json({ error }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
-    const data = await request.json(); // 获取请求体中的 JSON 数据
-    return Response.json(await createUser(data)); // 将数据传递给 createUser 函数
+    const session = await auth();
+    
+    // 验证用户是否登录
+    if (!session?.user) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const data = await request.json();
+    return Response.json(await createUser(data));
   } catch (error) {
-  	return Response.json({ error }, { status: 500 });
+    return Response.json({ error }, { status: 500 });
   }
 }
 
