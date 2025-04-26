@@ -4,6 +4,9 @@ import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
 import { Suspense } from 'react';
 import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardsSkeleton } from '@/app/ui/skeletons';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Page() {
   return (
     <main>
