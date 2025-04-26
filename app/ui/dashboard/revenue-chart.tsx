@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
-import { lusitana } from '@/app/ui/fonts';
 import { Revenue } from '@/app/lib/definitions';
 import { fetchRevenue } from '@/app/lib/data';
 // This component is representational only.
@@ -29,7 +28,7 @@ export default async function RevenueChart() {
   return (
     <Card className="w-full md:col-span-4">
       <CardHeader>
-        <CardTitle className={`${lusitana.className} text-xl md:text-2xl`}>
+        <CardTitle className={`text-xl md:text-2xl`}>
         Recent Revenue
         </CardTitle>
       </CardHeader>

@@ -1,5 +1,4 @@
 import { GlobeIcon } from "lucide-react";
-import { lusitana } from '@/app/ui/fonts';
 import { cn } from "@/lib/utils";
 
 export default function AcmeLogo() {
@@ -7,7 +6,6 @@ export default function AcmeLogo() {
     <div
       className={cn(
         "flex items-center gap-2",
-        lusitana.className
       )}
     >
       <GlobeIcon 

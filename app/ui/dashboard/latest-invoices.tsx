@@ -1,6 +1,5 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
 import { LatestInvoice } from '@/app/lib/definitions';
 import { fetchLatestInvoices } from '@/app/lib/data';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -12,7 +11,7 @@ export default async function LatestInvoices() {
   return (
     <Card className="col-span-4">
       <CardHeader>
-        <CardTitle className={`${lusitana.className} text-xl md:text-2xl`}>
+        <CardTitle className={`text-xl md:text-2xl`}>
           Latest Invoices
         </CardTitle>
       </CardHeader>
@@ -37,7 +36,7 @@ export default async function LatestInvoices() {
                 </p>
               </div>
             </div>
-            <p className={`${lusitana.className} text-sm font-medium`}>
+            <p className={`text-sm font-medium`}>
               {invoice.amount}
             </p>
           </div>

@@ -4,7 +4,6 @@ import {
   UserGroupIcon,
   InboxIcon,
 } from '@heroicons/react/24/outline';
-import { lusitana } from '@/app/ui/fonts';
 import { fetchCardData } from '@/app/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -57,7 +56,7 @@ function DashboardCard({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className={`${lusitana.className} text-2xl font-bold`}>
+        <div className={`text-2xl font-bold`}>
           {value}
         </div>
       </CardContent>
