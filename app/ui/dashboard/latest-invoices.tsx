@@ -9,7 +9,7 @@ export default async function LatestInvoices() {
   const latestInvoices = await fetchLatestInvoices()
   
   return (
-    <Card className="col-span-4">
+    <Card className="w-full md:col-span-4">
       <CardHeader>
         <CardTitle className={`text-xl md:text-2xl`}>
           Latest Invoices

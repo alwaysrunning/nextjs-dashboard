@@ -37,12 +37,21 @@ export default function SideNav() {
             <PowerIcon className="h-4 w-4" />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="w-[240px]">
-          <NavLinks />
+        <SheetContent side="left" className="flex h-full w-[140px] flex-col" title="Navigation Menu">
+          <div className="flex-1">
+            <NavLinks />
+          </div>
+          <Button
+            variant="ghost"
+            onClick={handleSignOut}
+            className="flex h-[48px] w-full items-center justify-center"
+          >
+            <PowerIcon className="h-4 w-4" />
+          </Button>
         </SheetContent>
       </Sheet>
 
-      <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
+      <div className="flex grow flex-col justify-end space-y-2 md:justify-between">
         <div className="hidden md:block">
           <NavLinks />
         </div>
@@ -50,10 +59,10 @@ export default function SideNav() {
         <Button
           variant="ghost"
           onClick={handleSignOut}
-          className="flex h-[48px] w-full items-center justify-start gap-2"
+          className="hidden h-[48px] w-full items-center justify-start md:flex"
         >
           <PowerIcon className="h-4 w-4" />
-          <span className="hidden md:block">Logout</span>
+          <span>Logout</span>
         </Button>
       </div>
     </nav>
