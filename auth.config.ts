@@ -22,8 +22,8 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-      const isOnCms = nextUrl.pathname.startsWith('/cms');
-      
+      const isOnCms = nextUrl.pathname.startsWith('/cms') || nextUrl.pathname.startsWith('/query');
+
       if (isOnDashboard) return isLoggedIn;
       if (isOnCms) return true; // 已登录/未登录都可访问，按需调整
       if (isLoggedIn) return Response.redirect(new URL('/dashboard', nextUrl));
