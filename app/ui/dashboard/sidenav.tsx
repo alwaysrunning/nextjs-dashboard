@@ -33,7 +33,7 @@ export default function SideNav() {
 
       <Sheet>
         <SheetTrigger asChild className="md:hidden">
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="icon" className='ml-2'>
             <PowerIcon className="h-4 w-4" />
           </Button>
         </SheetTrigger>
