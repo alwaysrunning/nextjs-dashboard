@@ -81,7 +81,7 @@ export default async function Page(props: {
   const params = await props.params;
   const { slug } = params;
   const pokemons = await getPokemonData(slug);
-  console.log('在构建时和重新验证之后再访问时运行');
+  console.log('在构建时和重新验证之后再访问时运行 slug======', slug);
   // 如果数据不存在，显示 404
   if (!pokemons) {
     notFound();

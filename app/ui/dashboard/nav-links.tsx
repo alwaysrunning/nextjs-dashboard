@@ -20,7 +20,7 @@ const links = [
     icon: DocumentDuplicateIcon,
   },
   { name: 'ImageCrop', href: '/dashboard/imgcrop', icon: UserGroupIcon },
-  { name: 'Gantt', href: '/dashboard/gantt', icon: ChartBarSquareIcon },
+  // { name: 'Gantt', href: '/dashboard/gantt', icon: ChartBarSquareIcon },
 ];
 
 export default function NavLinks() {

@@ -22,13 +22,11 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-
-      if (isOnDashboard) {
-        if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL('/dashboard', nextUrl));
-      }
+      const isOnCms = nextUrl.pathname.startsWith('/cms');
+      
+      if (isOnDashboard) return isLoggedIn;
+      if (isOnCms) return true; // 已登录/未登录都可访问，按需调整
+      if (isLoggedIn) return Response.redirect(new URL('/dashboard', nextUrl));
       return true;
     },
   },
