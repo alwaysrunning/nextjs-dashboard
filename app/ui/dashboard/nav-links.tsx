@@ -19,7 +19,7 @@ const links = [
     href: '/dashboard/invoices',
     icon: DocumentDuplicateIcon,
   },
-  { name: 'ImageCrop', href: '/dashboard/imgcrop', icon: UserGroupIcon },
+  // { name: 'ImageCrop', href: '/dashboard/imgcrop', icon: UserGroupIcon },
   // { name: 'Gantt', href: '/dashboard/gantt', icon: ChartBarSquareIcon },
 ];
 
