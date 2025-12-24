@@ -1,20 +1,22 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
+import { Suspense } from 'react'
+import Item from './item';
 // 获取所有可用的 slug 列表（用于 SSG）
 async function getAllSlugs() {
   try {
     // 使用 force-cache 来启用静态生成时的缓存
     const response = await fetch(`https://pokeapi.co/api/v2/type`, {
       // 构建时使用 force-cache，运行时可以重新验证
-      cache: 'force-cache',
-      next: { 
-        // 设置重新验证时间（ISR），单位：秒
-        // 3600 = 1小时，设置为 0 表示禁用 ISR，完全静态
-        revalidate: 3600 
-      }
+      // cache: 'force-cache',
+      // next: { 
+      //   // 设置重新验证时间（ISR），单位：秒
+      //   // 3600 = 1小时，设置为 0 表示禁用 ISR，完全静态
+      //   revalidate: 3600,
+      //   tags: ['user'],
+      // }
     });
-    
+    console.log('仅构建时运行');
     if (!response.ok) {
       throw new Error('Failed to fetch pokemon list');
     }
@@ -33,16 +35,26 @@ async function getAllSlugs() {
   }
 }
 
+// 生成静态路径 - 这是实现 SSG 的关键
+export async function generateStaticParams() {
+  const slugs = await getAllSlugs();
+  
+  // 返回所有需要预生成的路径参数
+  return slugs.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
 // 获取单个 Pokemon 数据
 async function getPokemonData(slug: string) {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/type/${slug}`, {
-      cache: 'force-cache',
-      next: { 
-        revalidate: 3600 // 1小时后重新验证
-      }
+      // cache: 'force-cache',
+      // next: { 
+      //   revalidate: 3600, // 1小时后重新验证
+      //   tags: ['user'], // 添加 tag，用于按需重新验证
+      // }
     });
-    
     if (!response.ok) {
       return null;
     }
@@ -57,16 +69,6 @@ async function getPokemonData(slug: string) {
   }
 }
 
-// 生成静态路径 - 这是实现 SSG 的关键
-export async function generateStaticParams() {
-  const slugs = await getAllSlugs();
-  
-  // 返回所有需要预生成的路径参数
-  return slugs.map((item) => ({
-    slug: item.slug,
-  }));
-}
-
 // 配置页面渲染方式
 // 如果不设置，Next.js 会根据是否有 generateStaticParams 自动选择 SSG
 // 显式设置可以更明确控制行为
@@ -79,7 +81,7 @@ export default async function Page(props: {
   const params = await props.params;
   const { slug } = params;
   const pokemons = await getPokemonData(slug);
-
+  console.log('在构建时和重新验证之后再访问时运行');
   // 如果数据不存在，显示 404
   if (!pokemons) {
     notFound();
@@ -94,7 +96,10 @@ export default async function Page(props: {
           textAlign: 'center', 
           padding: '10px 0' 
         }}>
-        <div
+        <Suspense fallback={<div>Loading...</div>}>
+          <Item pokemons={pokemons}></Item>
+        </Suspense>
+        {/* <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(6, 1fr)",
@@ -118,7 +123,7 @@ export default async function Page(props: {
               <div>{item.name}</div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

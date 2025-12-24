@@ -2,6 +2,7 @@ import { db } from "@vercel/postgres";
 import { PrismaClient } from '@prisma/client'
 import { customers, invoices, users } from "../lib/placeholder-data";
 import { auth } from '@/auth'
+import { revalidateTag, revalidatePath } from "next/cache";
 
 const prisma = new PrismaClient()
 
@@ -278,19 +279,45 @@ async function deleteUser(data) {
 }
 
 export async function GET(request: Request) {
+  
   try {
+    const url = new URL(request.url);
+    const params = new URLSearchParams(url.search);
+    const slug = params.get('slug'); // 可选：指定要重新验证的 slug
+    const revalidateAll = params.get('all') === 'true'; // 是否重新验证所有页面
+    
+    // 如果提供了重新验证参数，执行重新验证逻辑
+    if (slug || revalidateAll) {
+      // 重新验证所有使用 'user' tag 的缓存数据
+      // revalidateTag('user');
+      
+      if (slug) {
+        // 重新验证特定的 CMS 详情页
+        revalidatePath(`/cms/${slug}`);
+        return Response.json({ 
+          message: `Cache revalidated for /cms/${slug}`,
+          timestamp: new Date().toISOString()
+        }, { status: 200 });
+      } else if (revalidateAll) {
+        // 重新验证所有 CMS 页面（包括新增的）
+        revalidatePath('/cms', 'layout');
+        return Response.json({ 
+          message: 'All CMS pages revalidated',
+          timestamp: new Date().toISOString()
+        }, { status: 200 });
+      }
+    }
+    
+    // 原有的业务逻辑
     const session = await auth();
-
     if (!session?.user) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const url = new URL(request.url);
-    const params = new URLSearchParams(url.search);
     const userId = params.get('id');
-    const tt = await fetchUser(userId)
+    const userData = await fetchUser(userId);
 
-    return Response.json(await fetchUser(userId));
+    return Response.json(userData);
   } catch (error) {
     return Response.json({ error }, { status: 500 });
   }
